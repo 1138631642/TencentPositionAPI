@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>简单地图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body, button, input, select, textarea {
+            font: 12px/16px Verdana, Helvetica, Arial, sans-serif;
+        }
+
+        p {
+            width: 603px;
+            padding-top: 3px;
+            overflow: hidden;
+        }
+
+        .btn {
+            width: 142px;
+        }
+
+        #container {
+            min-width: 600px;
+            min-height: 767px;
+        }
+    </style>
+    <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp"></script>
+    <script>
+
+        window.onload = function () {
+
+            //直接加载地图
+
+
+            //初始化地图函数  自定义函数名init
+            function init() {
+                //定义map变量 调用 qq.maps.Map() 构造函数   获取地图显示容器
+                var center = new qq.maps.LatLng(39.916527, 116.397128);
+                var map = new qq.maps.Map(document.getElementById("container"), {
+                    center: center,      // 地图的中心地理坐标。经纬度
+                    zoom: 8    // 缩放级别                                            
+                });
+
+
+
+
+
+                //创建标记
+                //var marker = new qq.maps.Marker({
+                //    position: center,
+                //    map: map
+                //});
+                ////添加到提示窗
+                //var info = new qq.maps.InfoWindow({
+                //    map: map
+                //});
+                //////获取标记的点击事件
+                //qq.maps.event.addListener(marker, 'click', function () {
+                //    info.open();
+                //    info.setContent('<div style="text-align:center;white-space:nowrap;' +
+                //        'margin:10px;">单击标记</div>');
+                //    info.setPosition(center);
+                //});
+                //// 设置标注拖拽为可以拖动的
+                //marker.setDraggable(true);
+
+
+
+                //// 自定义标注
+                //var marker = new qq.maps.Marker({
+                //    position: center,
+                //    map: map,
+                //});
+                //var anchor = new qq.maps.Point(0, 39),
+                //    size = new qq.maps.Size(42, 68),
+                //    origin = new qq.maps.Point(0, 0),
+                //    markerIcon = new qq.maps.MarkerImage(
+                //        "https://www.baidu.com/favicon.ico",
+                //        size,
+                //        origin,
+                //        anchor
+                //    );
+                //marker.setIcon(markerIcon);
+
+
+                // 添加标注
+                //var marker = new qq.maps.Marker({
+                //    position: center,
+                //    map: map
+                //});
+
+                // 添加文本标注
+                //var label = new qq.maps.Label({
+                //    position: center,
+                //    map: map,
+                //    content: '文本标注'
+                //});
+
+
+
+                // 获取地图的缩放级别
+                //var zoomLevelControl = new qq.maps.Control(
+                //    {
+                //        content: '缩放级别:' + map.getZoom(),
+                //        align: qq.maps.ALIGN.TOP,
+                //        map: map
+                //    }
+                //);
+
+
+
+                //// 为地图添加比例控件
+                //var scaleControl = new qq.maps.ScaleControl({
+                //    align: qq.maps.ALIGN.BOTTOM_LEFT,
+                //    margin: qq.maps.Size(85, 15),
+                //    map: map
+                //});
+
+                //// 移除比例控件
+                //scaleControl.setMap(null);
+
+
+                // 点击事件的移除
+                //var listener = qq.maps.event.addListener(
+                //    map,
+                //    'click',
+                //    function () {
+                //        alert('您点击了地图。');
+                //    }
+                //);
+                ////移除 click 事件.
+                //qq.maps.event.removeListener(listener);
+
+
+
+                //添加监听事件
+                //qq.maps.event.addListener(map, 'click', function () {
+                //    alert('您点击了地图.');
+                //});
+
+
+
+                // 通过添加点击事件来获取点击处的经纬度
+                //qq.maps.event.addListener(
+                //    map,
+                //    'click',
+                //    function (event) {
+                //        alert('您点击的位置为:[' + event.latLng.getLng() +
+                //            ',' + event.latLng.getLat() + ']');
+                //    }
+                //);
+            }
+
+            //调用初始化函数地图
+            init();
+
+
+            
+
+
+        }
+    </script>
+</head>
+<body>
+    <!--   定义地图显示容器   -->
+    <div id="container"></div>
+</body>
+</html>

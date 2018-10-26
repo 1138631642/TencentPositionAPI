@@ -1,0 +1,475 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+
+        });
+    </script>
+    <style>
+        td {
+            width: 400px;
+        }
+
+        .s_btn {
+            width: 100px;
+            height: 36px;
+            color: #fff;
+            font-size: 15px;
+            letter-spacing: 1px;
+            background: #3385ff;
+            border-bottom: 1px solid #2d78f4;
+            outline: medium;
+            -webkit-appearance: none;
+            -webkit-border-radius: 0;
+            border: 0;
+        }
+
+        .s_ipt_wr {
+            border: 1px solid #b6b6b6;
+            border-color: #7b7b7b #b6b6b6 #b6b6b6 #7b7b7b;
+            background: #fff;
+            display: inline-block;
+            vertical-align: top;
+            width: 239px;
+            margin-right: 0;
+            /*border-right-width: 0;*/
+            border-color: #b8b8b8 transparent #ccc #b8b8b8;
+            overflow: hidden;
+            height: 30px;
+            padding-left: 15px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui-widget">
+        <h1>1、位置搜索：</h1>
+        <input type="text" name="kw" id="kw" class="s_ipt_wr" value="" placeholder="请输入要搜索的关键词" />
+        <input type="text" name="address" id="address" class="s_ipt_wr" value="" placeholder="请输入要搜索的地区" />
+        <input type="button" name="name" value="搜索" class="s_btn" id="btnGet" />
+        <br />
+        <br />
+        <h1>2、根据经纬度获取信息：</h1>
+        经度：<input type="text" name="kw" id="lat" class="s_ipt_wr" value="" placeholder="请输入经度" />
+        纬度：<input type="text" name="kw" id="lng" class="s_ipt_wr" value="" placeholder="请输入纬度" />
+        <input type="button" name="name" value="获取" class="s_btn" id="btnByLatAndLng" />
+        <br />
+        <span>根据经度和纬度搜索结果如下：</span>
+        <br />
+        编码：<input type="text" id="code" class="s_ipt_wr" value="" />
+        城市：<input type="text" id="city" class="s_ipt_wr" value="" />
+        区域：<input type="text" id="district" class="s_ipt_wr" value="" />
+        地址：<input type="text" id="addr" class="s_ipt_wr" value="" />
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <input type="button" name="name" value="上一页" class="s_btn" id="btnBefore" />
+    <input type="button" name="name" value="下一页" class="s_btn" id="btnNext" />
+    <br />
+    <span id="pageIndexText">1</span>
+    <span>搜索结果如下：</span>
+
+    <div>
+        <table id="add" border="1">
+            <tr>
+                <td>序号</td>
+                <td>名称</td>
+                <td>地址</td>
+                <td>地理位置</td>
+            </tr>
+
+        </table>
+        <ul></ul>
+    </div>
+
+    <br />
+    <br />
+    <hr />
+    <h1>3、根据地址获取信息：</h1>
+    地址：<input type="text" name="kw" id="address2" class="s_ipt_wr" value="" placeholder="请输入地址" />
+    <input type="button" name="name" value="获取" class="s_btn" id="btnGetByAddress" />
+    <br />
+    <span>根据地址搜索结果如下：</span>
+    <br />
+    所属县：<input type="text" id="province2" class="s_ipt_wr" value="" />
+    所属城市：<input type="text" id="city2" class="s_ipt_wr" value="" />
+    所属区域：<input type="text" id="district2" class="s_ipt_wr" value="" />
+    详细地址：<input type="text" id="addr2" class="s_ipt_wr" value="" />
+    <br />
+    <br />
+
+    <h1>4、步行导航：</h1>
+    起始地址：<input type="text" name="kw" id="beginAddr" class="s_ipt_wr" value="九江学院" placeholder="请输入起始地址" />
+    终止地址：<input type="text" name="kw" id="endAddr" class="s_ipt_wr" value="九江职业技术学院" placeholder="请输入终止地址地址" />
+    <input type="button" name="name" value="获取" class="s_btn" id="btnGetByBeginAndEnd" />
+    <br />
+    <span>导航路线如下：</span>
+    <br />
+    <ul id="nav"></ul>
+
+    <br />
+    <br />
+    <h1>5、根据IP定位：</h1>
+    IP：<input type="text" name="kw" id="ip" class="s_ipt_wr" value="" placeholder="请输入IP地址" />
+    <input type="button" name="name" value="获取" class="s_btn" id="btnGetLoacationByIP" />
+    <br />
+    <span>结果如下：</span>
+    <br />
+    详细地址：<input type="text" name="kw" id="address3" class="s_ipt_wr" value="" placeholder="获取详细地址" />
+    纬度：<input type="text" name="kw" id="lat3" class="s_ipt_wr" value="" placeholder="lat" />
+    经度：<input type="text" name="kw" id="lng3" class="s_ipt_wr" value="" placeholder="lng" />
+
+
+    <div style="width:100%;height:500px;margin-bottom:500px;"></div>
+</body>
+</html>
+
+<script>
+    var pageIndex = 1; // 第几页
+    var availableTags = [] // 定义一个数组用来存储自动提示数据
+    // 定义经纬度变量，用于定位
+    var lat2="";
+    var lng2="";
+    // 定义地址用于根据用户输入的地址获取地址信息
+    var address2;
+    $(function () {
+
+        // 根据用户输入的IP获取详细地址信息
+        $("#btnGetLoacationByIP").click(function () {
+            GetLoacationByIP();
+        });
+
+        // 根据用户输入的位置进行导航
+        $("#btnGetByBeginAndEnd").click(function () {
+            GetByBeginAndEnd();
+        });
+
+        // 根据用户输入的地址来获取位置信息
+        $("#btnGetByAddress").click(function () {
+            GetDataByAddress();
+        });
+
+        // 根据用户输入的经纬度来获取数据
+        $("#btnByLatAndLng").click(function () {
+
+            GetDataByLatAndLng();
+        });
+
+        // 给指定的文本框绑定数据源，用户自动输入提示
+        $("#kw").autocomplete({
+            source: availableTags
+        });
+
+        // 当关键词输入的时候触发
+        $("#kw").keydown(function () {
+            //alert()
+            GetData2();
+        })
+
+        // 搜索查询
+        $("#btnGet").click(function () {
+            pageIndex = 1;
+            GetData();
+        });
+
+        // 上一页
+        $("#btnBefore").click(function () {
+            if (pageIndex > 1) {
+                pageIndex -= 1;
+            }
+            GetData();
+        });
+
+        // 下一页
+        $("#btnNext").click(function () {
+            pageIndex += 1;
+            GetData();
+        });
+
+
+        $("#btn").click(function () {
+            $.ajax({
+                type: "get",
+                url: "/Home/Test",
+                dataType: "json",
+                success: function (resp) {
+                    alert(resp.Name);
+                }
+            });
+        });
+    });
+
+
+    // 根据用户输入的IP地址获取详细信息
+    function GetLoacationByIP() {
+        var ip = $("#ip").val();
+
+        $.ajax({
+            type: "get",
+            url: "/Home/GetLocationByIP",
+            dataType: "json",
+            data: {
+                ip: ip
+            },
+            success: function (resp) {
+                // 将后台转回来的字符串转换为json格式
+                var json = eval('(' + resp + ')');
+                var address3 = json.result.address; // 地址
+                var lat3 = json.result.location.lat;
+                var lng3 = json.result.location.lng;
+
+                $("#address3").val(address3);
+                $("#lat3").val(lat3);
+                $("#lng3").val(lng3);
+            }
+            , error: function () {
+                alert("网络请求失败！！")
+            }
+        });
+
+    }
+
+    // 根据用户输入的起始和终止地址进行导航
+    function GetByBeginAndEnd() {
+        // 获取用户输入的起始和终止地址
+        var beginAddr = $("#beginAddr").val();
+        var endAddr = $("#endAddr").val();
+
+        
+        $.ajax({
+            type: "get",
+            url: "/Home/GetNavationByAddress",
+            dataType: "json",
+            data: {
+                beginAddr: beginAddr,
+                endAddr: endAddr
+            },
+            success: function (resp) {
+                // 将后台转回来的字符串转换为json格式
+                var json = eval('(' + resp + ')');
+                var jsonData = json.result.routes[0].steps;
+
+                // 清除ul中数据
+                $("#nav li").remove();
+
+                for (var i = 0; i < jsonData.length; i++) {
+                    $("#nav").append("<li>" + jsonData[i].instruction+"</li>")
+                    
+                }
+            }
+            , error: function () {
+                alert("网络请求失败！！")
+            }
+        });
+        
+    }
+
+    // 根据地址获取经纬度
+    function GetLatAndLngByAddress(addr) {
+       
+        $.ajax({
+            type: "get",
+            url: "/Home/GetLocationByAddress",
+            dataType: "json",
+            data: {
+                address: addr
+            },
+            success: function (resp) {
+                // 将后台转回来的字符串转换为json格式
+                var json = eval('(' + resp + ')');
+                lat2 = json.result.location.lat;
+                lng2 = json.result.location.lng;
+                alert("地址为" + addr+"的经纬度是：" + lat2 + "-" + lng2)
+            }
+            , error: function () {
+                alert("网络请求失败！！")
+            }
+        });
+
+        return lat2, lng2;
+    };
+
+    // 根据地址获取位置信息
+    function GetDataByAddress() {
+      
+         address2 = $("#address2").val();
+
+        $.ajax({
+            type: "get",
+            url: "/Home/GetLocationByAddress",
+            dataType: "json",
+            data: {
+                address: address2
+            },
+            success: function (resp) {
+                // 将后台转回来的字符串转换为json格式
+                var json = eval('(' + resp + ')');
+
+                var province = json.result.address_components.province; // 省份
+                var city = json.result.address_components.city; // 城市
+                var district = json.result.address_components.district; // 区域
+                var street_number = json.result.address_components.street_number; // 街道
+                var title = json.result.title; // 标题
+
+                //lat = json.result.location.lat;
+                //lng = json.result.location.lng;
+                alert(lat + "-" + lng)
+                $("#province2").val(province);
+                $("#city2").val(city);
+                $("#district2").val(district);
+                $("#addr2").val(title);
+                //alert(province + "," + city + "," + district + "," + street_number)
+
+            }
+            , error: function () {
+                alert("网络请求失败！！")
+            }
+        });
+    };
+
+    // 跟据经纬度获获取数据
+    function GetDataByLatAndLng() {
+
+        var lat = $("#lat").val();
+        var lng = $("#lng").val();
+
+        $.ajax({
+            type: "get",
+            url: "/Home/GetDataByLocation",
+            dataType: "json",
+            data: {
+                lat: lat,
+                lng: lng
+            },
+            success: function (resp) {
+
+                var json = eval('(' + resp + ')');
+
+                var message = json.message // 返回消息
+                var status = json.status; // 返回结果
+                var adcode = json.result.ad_info.adcode; // 编码
+                var city = json.result.ad_info.city; // 城市
+                var district = json.result.ad_info.district; // 区域
+                var address = json.result.address; // 地址
+                //alert(adcode + "-" + city + "-" + district + "-" + address);
+                $("#code").val(adcode);
+                $("#city").val(city);
+                $("#district").val(district);
+                $("#addr").val(address);
+
+                // 清除table中数据
+                var tb = document.getElementById('add');
+                var rowNum = tb.rows.length;
+                for (i = 1; i < rowNum; i++) {
+                    tb.deleteRow(i);
+                    rowNum = rowNum - 1;
+                    i = i - 1;
+                }
+
+                for (var i = 0; i < json.result.pois.length; i++) {
+
+
+                    //alert(json.result.pois.category)
+                    $("#add").append("<tr>" + "<td>" + (i + 1) + "</td><td>" + json.result.pois[i].category + "</td><td>" + json.result.pois[i].address + "</td><td>(" + json.result.pois[i].location.lat + "," + json.result.pois[i].location.lng + ")</td>" + "</tr>")
+                }
+
+            }
+            , error: function () {
+                alert("网络请求失败！！")
+            }
+        });
+
+
+    }
+
+    // 获取数据
+    function GetData() {
+        $.ajax({
+            type: "get",
+            url: "/Home/GetDataByPage",
+            dataType: "json",
+            data: {
+                address: $("#address").val(),
+                kw: $("#kw").val(),
+                pageIndex: pageIndex
+            },
+            success: function (resp) {
+                if (resp.status != 0) {
+                    alert("没有搜到！！")
+                    return;
+                }
+                var tb = document.getElementById('add');
+                var rowNum = tb.rows.length;
+                for (i = 1; i < rowNum; i++) {
+                    tb.deleteRow(i);
+                    rowNum = rowNum - 1;
+                    i = i - 1;
+                }
+
+                for (var i = 0; i < resp.data.length; i++) {
+
+                    $("#add").append("<tr>" + "<td>" + (i + 1) + "</td><td>" + resp.data[i].title + "</td><td>" + resp.data[i].address + "</td><td>(" + resp.data[i].location.lat + "," + resp.data[i].location.lng + ")</td>" + "</tr>")
+                }
+            }
+            , error: function () {
+                alert("网络请求失败！！")
+            }
+        });
+
+        $("#pageIndexText").html(pageIndex)
+    }
+
+    // 当用户在文本框中输入内容的时候，发送ajax请求获取数据填充到数组中去
+    function GetData2() {
+        // 每次用户重新输入搜索的时候，清除数组的内容
+        availableTags.splice(0, availableTags.length);
+        $.ajax({
+            type: "get",
+            url: "/Home/GetTipData",
+            dataType: "json",
+            data: {
+
+                kw: $("#kw").val()
+
+            },
+            success: function (resp) {
+                //availableTags=[]
+                if (resp.status != 0) {
+                    return;
+                }
+                if (resp.data.length < 1) {
+                    return;
+                }
+                for (var i = 0; i < resp.data.length; i++) {
+                    //alert(resp.data[i].title)
+                    // 将标题添加到数组中
+                    availableTags.push(resp.data[i].title);
+                }
+
+
+            }
+            , error: function () {
+                alert("网络请求失败！！")
+            }
+        });
+
+
+    }
+</script>

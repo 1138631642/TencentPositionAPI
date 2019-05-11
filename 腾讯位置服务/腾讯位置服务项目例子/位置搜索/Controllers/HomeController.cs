@@ -24,7 +24,7 @@ namespace 位置搜索.Controllers
         /// <returns></returns>
         public ActionResult GetData()
         {
-            string url = "https://apis.map.qq.com/ws/place/v1/search?keyword=旅馆&boundary=nearby(115.992811,29.712034,1000)&page_size=20&page_index=2&key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A";
+            string url = "https://apis.map.qq.com/ws/place/v1/search?keyword=旅馆&boundary=nearby(115.992811,29.712034,1000)&page_size=20&page_index=2&key=xxx";
             HttpClient request = new HttpClient();
             string result = request.GetStringAsync(url).Result;
 
@@ -43,7 +43,7 @@ namespace 位置搜索.Controllers
         {
 
             int pageCount = 10;
-            string url = "https://apis.map.qq.com/ws/place/v1/search?key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A&orderby=_distance&";
+            string url = "https://apis.map.qq.com/ws/place/v1/search?key=xx&";
             if (!string.IsNullOrEmpty(kw))
             {
                 url += "keyword=" + kw;
@@ -90,7 +90,7 @@ namespace 位置搜索.Controllers
         {
 
 
-            string url = "https://apis.map.qq.com/ws/place/v1/suggestion/?region=北京&key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A&keyword=";
+            string url = "https://apis.map.qq.com/ws/place/v1/suggestion/?region=北京&key=xxx&keyword=";
 
             if (!string.IsNullOrEmpty(kw))
             {
@@ -115,7 +115,7 @@ namespace 位置搜索.Controllers
         public ActionResult GetDataByLocation(string lat,string lng)
         {
 
-            string url = "https://apis.map.qq.com/ws/geocoder/v1/?key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A&get_poi=1&location=";
+            string url = "https://apis.map.qq.com/ws/geocoder/v1/?key=xxx&get_poi=1&location=";
 
             if(!string.IsNullOrEmpty(lat)&&!string.IsNullOrEmpty(lng))
             {
@@ -136,7 +136,7 @@ namespace 位置搜索.Controllers
         // 根据地址获取该位置信息
         public ActionResult GetLocationByAddress(string address)
         {
-            string url = "https://apis.map.qq.com/ws/geocoder/v1/?key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A&address=";
+            string url = "https://apis.map.qq.com/ws/geocoder/v1/?key=xxx&address=";
 
             if (!string.IsNullOrEmpty(address))
             {
@@ -161,7 +161,7 @@ namespace 位置搜索.Controllers
             Dictionary<string,string> endDic = GetLatAndLngByAddrress(endAddr);
 
             // 39.984042,116.307535&to=39.976249,116.316569&key=YourKey
-            string url = "https://apis.map.qq.com/ws/direction/v1/walking/?key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A&from=";
+            string url = "https://apis.map.qq.com/ws/direction/v1/walking/?key=xx&from=";
 
             url += beginDic["lat"] + "," + beginDic["lng"]; // 添加起始地址经纬度
             url += "&to=";
@@ -180,7 +180,7 @@ namespace 位置搜索.Controllers
             Dictionary<string, string> dict = new Dictionary<string, string>();
 
 
-            string url = "https://apis.map.qq.com/ws/geocoder/v1/?key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A&address=";
+            string url = "https://apis.map.qq.com/ws/geocoder/v1/?key=xxx&address=";
 
             if (!string.IsNullOrEmpty(address))
             {
@@ -208,7 +208,7 @@ namespace 位置搜索.Controllers
         public ActionResult GetLocationByIP(string ip)
         {
             // 1. 先根据IP获取经纬度
-            string url = "https://apis.map.qq.com/ws/location/v1/ip?key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A&ip=";
+            string url = "https://apis.map.qq.com/ws/location/v1/ip?key=xxx&ip=";
             if (!string.IsNullOrEmpty(ip))
             {
                 url += ip;

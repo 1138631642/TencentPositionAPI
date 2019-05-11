@@ -12,7 +12,7 @@ namespace 测试
     {
         static void Main(string[] args)
         {
-            string url = "https://apis.map.qq.com/ws/place/v1/search?keyword=%E9%85%92%E5%BA%97&boundary=nearby(116.405285,39.904989,1000)&key=O5KBZ-3ZA3X-CP344-ZGAUQ-3UDGV-RMB2A";
+            string url = "https://apis.map.qq.com/ws/place/v1/search?keyword=%E9%85%92%E5%BA%97&boundary=nearby(116.405285,39.904989,1000)&key=xx";
             HttpClient request = new HttpClient();
             string result = request.GetStringAsync(url).Result;
 
